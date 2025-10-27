@@ -39,8 +39,46 @@ document.addEventListener("keydown", (e) => {
   if the user presses the key p => play paper
   if the user presses the key s => play scissors
   */
+let autoclick = false;
+function autoClick() {
+  if (autoclick == false) {
+    autoplay(autoclick)
+    autoclick = true
+  }
+  else {
+    autoplay(autoclick)
+    autoclick = false
+  }
+}
+function autoplay(auto) {
+  if (auto == false) {
+    playGame(pickComputerMove());
+    setTimeout(autoplay(false), 1000)
+    
+  }
+  else {
+    clearTimeout(autoplay)
+    auto=false
+  }
+}
+let autoClick = false;
+let autoPlayInterval; // variable pour stocker l'intervalle
 
+function autoClickToggle() {
+  if (!autoClick) {
+    autoClick = true;
+    autoplay();
+  } else {
+    autoClick = false;
+    clearInterval(autoPlayInterval);
+  }
+}
 
+function autoplay() {
+  autoPlayInterval = setInterval(() => {
+    playGame(pickComputerMove());
+  }, 1000); 
+}
 
 function playGame(playerMove) {
   let result = '';

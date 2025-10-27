@@ -1,0 +1,14 @@
+console.log("Program Started");
+let myPromise = new Promise(function(myResolve) {
+    setTimeout(function() { myResolve("Promise Resolved") }, 3000);
+});
+console.log(myPromise);
+console.log("Program in Progress ...");
+myPromise.then(function() {
+    console.log("Step 1 complete" );
+    return new Promise(function(resolve) {
+        setTimeout(function() { resolve("Step 2 complete"); }, 3000);
+    });
+}).then(function(msg) {
+    console.log(msg);
+})
