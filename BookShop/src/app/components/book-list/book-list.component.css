@@ -1,0 +1,7 @@
+.toolbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px }
+.actions .btn { margin-left:8px }
+.books { width:100%; border-collapse: collapse }
+.books th, .books td { border:1px solid #ddd; padding:8px }
+.btn { padding:6px 10px; background:#1976d2; color:white; border:none; text-decoration:none }
+.btn.small { padding:4px 8px; font-size:0.9rem }
+.btn.danger { background:#d32f2f }

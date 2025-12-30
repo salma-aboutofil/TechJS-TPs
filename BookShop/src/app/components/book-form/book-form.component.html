@@ -1,0 +1,26 @@
+<h2 *ngIf="!isEdit">New Book</h2>
+<h2 *ngIf="isEdit">Edit Book</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="field">
+    <label>Title</label>
+    <input formControlName="title" />
+    <div class="error" *ngIf="form.controls.title.invalid && form.controls.title.touched">Title required</div>
+  </div>
+
+  <div class="field">
+    <label>Author</label>
+    <input formControlName="author" />
+    <div class="error" *ngIf="form.controls.author.invalid && form.controls.author.touched">Author required</div>
+  </div>
+
+  <div class="field">
+    <label>Year</label>
+    <input formControlName="year" type="number" />
+  </div>
+
+  <div class="buttons">
+    <button type="submit" [disabled]="form.invalid" class="btn">Save</button>
+    <button type="button" (click)="cancel()" class="btn">Cancel</button>
+  </div>
+</form>

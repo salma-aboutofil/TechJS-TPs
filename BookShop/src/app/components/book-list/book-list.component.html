@@ -1,0 +1,29 @@
+<div class="toolbar">
+  <h2>Books</h2>
+  <div class="actions">
+    <a routerLink="/books/new" class="btn">New Book</a>
+    <button (click)="refresh()" class="btn">Refresh</button>
+  </div>
+</div>
+
+<table class="books">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Year</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books$ | async">
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.year ?? '-' }}</td>
+      <td>
+        <a [routerLink]="['/books', book.id, 'edit']" class="btn small">Edit</a>
+        <button (click)="delete(book.id)" class="btn small danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
